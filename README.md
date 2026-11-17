@@ -5,6 +5,14 @@ SHA-256 digests of both the CM7 and CM4 application images before it jumps to
 the application. If any check fails, it prints the reason on the serial port and
 does not boot.
 
+## Overview
+
+One page that shows the whole solution: what the PC tool builds, where each piece sits in
+flash, and the checks the bootloader runs on every boot, including which on-board test
+triggers which failure. (Vector source: [`docs/secure_boot_flow.svg`](docs/secure_boot_flow.svg).)
+
+<img src="docs/secure_boot_flow.png" alt="Secure boot flow: PC signing, flash memory map and bootloader checks" width="100%">
+
 ## Lab assignment (summary)
 
 Lab 5 continues Lab 4 (a bootloader that jumps to an application). The lab sheet

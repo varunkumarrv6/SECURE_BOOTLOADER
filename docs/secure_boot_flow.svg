@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="940" viewBox="0 0 1500 940" font-family="DejaVu Sans, Segoe UI, Helvetica, Arial, sans-serif">
+<defs>
+<marker id="m_2F6DB5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2F6DB5"/></marker>
+<marker id="m_2E7D32" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2E7D32"/></marker>
+<marker id="m_C62828" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C62828"/></marker>
+<marker id="m_7B3FA0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7B3FA0"/></marker>
+<marker id="m_B7791F" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#B7791F"/></marker>
+<marker id="m_8A8575" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A8575"/></marker>
+<marker id="m_1F7A6D" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F7A6D"/></marker>
+</defs>
+<rect width="1500" height="940" fill="#FFFFFF"/>
+<text x="750.0" y="40" font-size="25" font-weight="bold" fill="#1F2933" text-anchor="middle">Secure boot flow: ELE304 Lab 5 (STM32H755, CM7 + CM4)</text>
+<text x="750.0" y="66" font-size="14.5" font-weight="normal" fill="#52606D" text-anchor="middle">ECDSA P-256 signature + SHA-256 digests, checked by the bootloader before every start</text>
+<rect x="30" y="88" width="440" height="34" rx="17" fill="#2F6DB5" stroke="#2F6DB5" stroke-width="0"/>
+<text x="250.0" y="111" font-size="15.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1   PC: after every build</text>
+<rect x="520" y="88" width="280" height="34" rx="17" fill="#5F5B4D" stroke="#5F5B4D" stroke-width="0"/>
+<text x="660.0" y="111" font-size="15.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2   Flash memory</text>
+<rect x="850" y="88" width="620" height="34" rx="17" fill="#1F7A6D" stroke="#1F7A6D" stroke-width="0"/>
+<text x="1160.0" y="111" font-size="15.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3   Board: every boot</text>
+<rect x="50" y="140" width="190" height="56" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="145" y="164" font-size="14.5" font-weight="bold" fill="#14365C" text-anchor="middle">app_cm7.bin</text>
+<text x="145" y="183" font-size="12" font-weight="normal" fill="#14365C" text-anchor="middle">linked @ 0x08020400</text>
+<rect x="260" y="140" width="190" height="56" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="355" y="164" font-size="14.5" font-weight="bold" fill="#14365C" text-anchor="middle">app_cm4.bin</text>
+<text x="355" y="183" font-size="12" font-weight="normal" fill="#14365C" text-anchor="middle">linked @ 0x08100000</text>
+<path d="M145,196 V222" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<path d="M355,196 V222" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<rect x="50" y="222" width="400" height="44" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="250" y="249" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="middle">SHA-256 of each image  →  two 32 B digests</text>
+<path d="M250,266 V290" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<rect x="50" y="290" width="400" height="152" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="66" y="313" font-size="15" font-weight="bold" fill="#14365C" text-anchor="start">Signed block, 128 B</text>
+<text x="66" y="338" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">magic 0x46574D41   ·   version</text>
+<text x="66" y="362" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">CM7 size   ·   CM4 size</text>
+<text x="66" y="386" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">SHA-256 (CM7)   ·   SHA-256 (CM4)</text>
+<text x="66" y="410" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">reserved: 48 B of 0x00</text>
+<path d="M250,442 V470" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<rect x="50" y="470" width="250" height="50" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="175" y="491" font-size="14" font-weight="bold" fill="#14365C" text-anchor="middle">ECDSA-P256 sign</text>
+<text x="175" y="510" font-size="12.5" font-weight="normal" fill="#14365C" text-anchor="middle">over SHA-256 (block)</text>
+<rect x="320" y="470" width="130" height="50" rx="10" fill="#F3E8FD" stroke="#7B3FA0" stroke-width="1.6"/>
+<text x="385" y="491" font-size="14" font-weight="bold" fill="#4A1F66" text-anchor="middle">ecc.key</text>
+<text x="385" y="510" font-size="12" font-weight="normal" fill="#4A1F66" text-anchor="middle">private, PC only</text>
+<path d="M320,495 H300" fill="none" stroke="#7B3FA0" stroke-width="2.2" marker-end="url(#m_7B3FA0)"/>
+<path d="M175,520 V545" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<rect x="50" y="545" width="400" height="84" rx="10" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="66" y="568" font-size="15" font-weight="bold" fill="#14365C" text-anchor="start">Header, 0x400 B</text>
+<text x="66" y="591" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">block (128 B)  |  meta hash (32 B)</text>
+<text x="66" y="612" font-size="13.5" font-weight="normal" fill="#14365C" text-anchor="start">signature r‖s (64 B)  |  zeros up to 0x400</text>
+<path d="M250,629 V655" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<rect x="50" y="655" width="400" height="56" rx="10" fill="#D6E6F8" stroke="#2F6DB5" stroke-width="2.2"/>
+<text x="250" y="678" font-size="14.5" font-weight="bold" fill="#14365C" text-anchor="middle">out_app_meta.bin  =  header + CM7 app</text>
+<text x="250" y="698" font-size="12" font-weight="normal" fill="#14365C" text-anchor="middle">made by tools/ele304_postbuild.py</text>
+<rect x="50" y="735" width="400" height="76" rx="10" fill="#F3E8FD" stroke="#7B3FA0" stroke-width="1.6"/>
+<text x="66" y="758" font-size="14" font-weight="bold" fill="#4A1F66" text-anchor="start">Public key (X‖Y, 64 B)</text>
+<text x="66" y="780" font-size="12.5" font-weight="normal" fill="#4A1F66" text-anchor="start">PreBuild.bat → ecc_pub_key.h (const),</text>
+<text x="66" y="798" font-size="12.5" font-weight="normal" fill="#4A1F66" text-anchor="start">compiled into the bootloader</text>
+<rect x="520" y="140" width="280" height="56" rx="10" fill="#F3F1EA" stroke="#8A8575" stroke-width="1.6"/>
+<text x="660" y="164" font-size="14.5" font-weight="bold" fill="#3E3B30" text-anchor="middle">CM4 app</text>
+<text x="660" y="183" font-size="12.5" font-weight="normal" fill="#3E3B30" text-anchor="middle">0x08100000  ·  3,372 B</text>
+<rect x="520" y="212" width="280" height="38" rx="10" fill="#FFFFFF" stroke="#8A8575" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="660" y="236" font-size="12" font-weight="normal" fill="#8A8575" text-anchor="middle" font-style="italic">unused</text>
+<rect x="520" y="262" width="280" height="100" rx="10" fill="#F3F1EA" stroke="#8A8575" stroke-width="1.6"/>
+<text x="660" y="296" font-size="14.5" font-weight="bold" fill="#3E3B30" text-anchor="middle">CM7 app</text>
+<text x="660" y="317" font-size="12.5" font-weight="normal" fill="#3E3B30" text-anchor="middle">0x08020400  ·  131,072 B</text>
+<text x="660" y="338" font-size="11.5" font-weight="normal" fill="#6B6759" text-anchor="middle">vector table offset 0x20400</text>
+<rect x="520" y="362" width="280" height="64" rx="10" fill="#FBF0D9" stroke="#B7791F" stroke-width="2"/>
+<text x="660" y="391" font-size="14.5" font-weight="bold" fill="#6B430C" text-anchor="middle">Metadata header</text>
+<text x="660" y="411" font-size="12.5" font-weight="normal" fill="#6B430C" text-anchor="middle">0x08020000  ·  0x400 B</text>
+<rect x="520" y="438" width="280" height="38" rx="10" fill="#FFFFFF" stroke="#8A8575" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="660" y="462" font-size="12" font-weight="normal" fill="#8A8575" text-anchor="middle" font-style="italic">unused</text>
+<rect x="520" y="490" width="280" height="120" rx="10" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="2"/>
+<text x="660" y="520" font-size="14.5" font-weight="bold" fill="#0F4A41" text-anchor="middle">Bootloader (CM7)</text>
+<text x="660" y="541" font-size="12.5" font-weight="normal" fill="#0F4A41" text-anchor="middle">0x08000000  ·  sector 0 (128 KB)</text>
+<text x="660" y="566" font-size="12" font-weight="normal" fill="#0F4A41" text-anchor="middle">public key stays in flash</text>
+<text x="660" y="584" font-size="12" font-weight="normal" fill="#0F4A41" text-anchor="middle">SHA-256 + ECDSA from cmox lib</text>
+<text x="660" y="645" font-size="12.5" font-weight="normal" fill="#52606D" text-anchor="middle" font-style="italic">flashed with STM32CubeProgrammer</text>
+<text x="660" y="663" font-size="12.5" font-weight="normal" fill="#52606D" text-anchor="middle" font-style="italic">(verify programming ticked)</text>
+<path d="M450,168 H520" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<path d="M450,683 H478 V312 H520" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<path d="M478,394 H520" fill="none" stroke="#2F6DB5" stroke-width="2.2" marker-end="url(#m_2F6DB5)"/>
+<path d="M450,768 H498 V550 H520" fill="none" stroke="#7B3FA0" stroke-width="2.2" marker-end="url(#m_7B3FA0)"/>
+<rect x="850" y="140" width="370" height="56" rx="10" fill="#FFFFFF" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="866" y="164" font-size="15" font-weight="bold" fill="#0F4A41" text-anchor="start">Reset: bootloader runs on the CM7</text>
+<text x="866" y="184" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">banner + chip UID over UART (115200 8N1)</text>
+<path d="M1035.0,196 V226" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<text x="1045.0" y="215" font-size="11" font-weight="normal" fill="#1F2933" text-anchor="start"></text>
+<rect x="850" y="226" width="370" height="70" rx="10" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="866" y="250" font-size="15" font-weight="bold" fill="#0F4A41" text-anchor="start">1   Sanity checks</text>
+<text x="866" y="272" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">magic 0x46574D41, sizes inside regions</text>
+<rect x="1245" y="226" width="225" height="70" rx="10" fill="#FDECEA" stroke="#C62828" stroke-width="1.6"/>
+<text x="1259" y="250" font-size="14" font-weight="bold" fill="#8E1B1B" text-anchor="start">FAIL: magic / size</text>
+<text x="1259" y="270" font-size="12.5" font-weight="normal" fill="#8E1B1B" text-anchor="start">stop, never jump</text>
+<text x="1259" y="284" font-size="11.5" font-weight="normal" fill="#8E1B1B" text-anchor="start" font-style="italic">coded, not run on the board</text>
+<path d="M1220,261.0 H1245" fill="none" stroke="#C62828" stroke-width="2.2" marker-end="url(#m_C62828)"/>
+<path d="M1035.0,296 V326" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<rect x="850" y="326" width="370" height="112" rx="10" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="866" y="350" font-size="15" font-weight="bold" fill="#0F4A41" text-anchor="start">2   Authenticate the header</text>
+<text x="866" y="372" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">hash the 128 B block (recomputed here)</text>
+<text x="866" y="391" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">ECDSA verify with the public key</text>
+<text x="1206" y="428" font-size="11.5" font-weight="normal" fill="#52606D" text-anchor="end" font-style="italic">reads 0x08020000</text>
+<rect x="1245" y="326" width="225" height="112" rx="10" fill="#FDECEA" stroke="#C62828" stroke-width="1.6"/>
+<text x="1259" y="350" font-size="14" font-weight="bold" fill="#8E1B1B" text-anchor="start">FAIL: signature</text>
+<text x="1259" y="370" font-size="12.5" font-weight="normal" fill="#8E1B1B" text-anchor="start">stop, never jump</text>
+<text x="1259" y="426" font-size="11.5" font-weight="normal" fill="#8E1B1B" text-anchor="start" font-style="italic">Test 3: 1 header byte flipped</text>
+<path d="M1220,382.0 H1245" fill="none" stroke="#C62828" stroke-width="2.2" marker-end="url(#m_C62828)"/>
+<path d="M1035.0,438 V468" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<rect x="850" y="468" width="370" height="84" rx="10" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="866" y="492" font-size="15" font-weight="bold" fill="#0F4A41" text-anchor="start">3   Is the CM7 image intact?</text>
+<text x="866" y="514" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">SHA-256 of CM7 @ 0x08020400</text>
+<text x="866" y="533" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">equals the signed CM7 digest ?</text>
+<rect x="1245" y="468" width="225" height="84" rx="10" fill="#FDECEA" stroke="#C62828" stroke-width="1.6"/>
+<text x="1259" y="492" font-size="14" font-weight="bold" fill="#8E1B1B" text-anchor="start">FAIL: CM7 digest</text>
+<text x="1259" y="512" font-size="12.5" font-weight="normal" fill="#8E1B1B" text-anchor="start">stop, never jump</text>
+<text x="1259" y="540" font-size="11.5" font-weight="normal" fill="#8E1B1B" text-anchor="start" font-style="italic">Test 2: 1 CM7 byte flipped</text>
+<path d="M1220,510.0 H1245" fill="none" stroke="#C62828" stroke-width="2.2" marker-end="url(#m_C62828)"/>
+<path d="M1035.0,552 V582" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<rect x="850" y="582" width="370" height="84" rx="10" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="866" y="606" font-size="15" font-weight="bold" fill="#0F4A41" text-anchor="start">4   Is the CM4 image intact?</text>
+<text x="866" y="628" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">SHA-256 of CM4 @ 0x08100000</text>
+<text x="866" y="647" font-size="13" font-weight="normal" fill="#0F4A41" text-anchor="start">equals the signed CM4 digest ?</text>
+<rect x="1245" y="582" width="225" height="84" rx="10" fill="#FDECEA" stroke="#C62828" stroke-width="1.6"/>
+<text x="1259" y="606" font-size="14" font-weight="bold" fill="#8E1B1B" text-anchor="start">FAIL: CM4 digest</text>
+<text x="1259" y="626" font-size="12.5" font-weight="normal" fill="#8E1B1B" text-anchor="start">stop, never jump</text>
+<text x="1259" y="654" font-size="11.5" font-weight="normal" fill="#8E1B1B" text-anchor="start" font-style="italic">Test 4: 1 CM4 byte flipped</text>
+<path d="M1220,624.0 H1245" fill="none" stroke="#C62828" stroke-width="2.2" marker-end="url(#m_C62828)"/>
+<path d="M1035.0,666 V696" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<rect x="850" y="696" width="370" height="100" rx="10" fill="#E6F4EA" stroke="#2E7D32" stroke-width="2"/>
+<text x="866" y="720" font-size="15" font-weight="bold" fill="#14451A" text-anchor="start">5   All checks passed</text>
+<text x="866" y="742" font-size="13" font-weight="normal" fill="#14451A" text-anchor="start">SECURE BOOT: image verified</text>
+<text x="866" y="761" font-size="13" font-weight="normal" fill="#14451A" text-anchor="start">check SP / reset, clean up, jump to CM7 app</text>
+<rect x="1245" y="696" width="225" height="100" rx="10" fill="#E6F4EA" stroke="#2E7D32" stroke-width="1.6"/>
+<text x="1259" y="720" font-size="14" font-weight="bold" fill="#14451A" text-anchor="start">Application starts</text>
+<text x="1259" y="740" font-size="12.5" font-weight="normal" fill="#14451A" text-anchor="start">CM7 app @ 0x08020400</text>
+<text x="1259" y="784" font-size="11.5" font-weight="normal" fill="#14451A" text-anchor="start" font-style="italic">Test 1: valid image boots</text>
+<path d="M1220,746 H1245" fill="none" stroke="#2E7D32" stroke-width="2.2" marker-end="url(#m_2E7D32)"/>
+<text x="850" y="826" font-size="13" font-weight="normal" fill="#8E1B1B" text-anchor="start">Any failure: print the reason on the serial port and halt in the bootloader.</text>
+<text x="850" y="846" font-size="13" font-weight="normal" fill="#8E1B1B" text-anchor="start">Nothing past the failed check is trusted or started.</text>
+<text x="1045.0" y="216" font-size="11" font-weight="normal" fill="#2E7D32" text-anchor="start">pass</text>
+<rect x="30" y="868" width="1440" height="52" rx="8" fill="#F7F8FA" stroke="#D5DAE0" stroke-width="1"/>
+<rect x="50" y="884" width="18" height="18" rx="4" fill="#E8F1FB" stroke="#2F6DB5" stroke-width="1.6"/>
+<text x="76" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">PC / build time</text>
+<rect x="210" y="884" width="18" height="18" rx="4" fill="#F3F1EA" stroke="#8A8575" stroke-width="1.6"/>
+<text x="236" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">Flash content</text>
+<rect x="360" y="884" width="18" height="18" rx="4" fill="#E3F3F0" stroke="#1F7A6D" stroke-width="1.6"/>
+<text x="386" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">Bootloader check</text>
+<rect x="540" y="884" width="18" height="18" rx="4" fill="#E6F4EA" stroke="#2E7D32" stroke-width="1.6"/>
+<text x="566" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">Pass</text>
+<rect x="620" y="884" width="18" height="18" rx="4" fill="#FDECEA" stroke="#C62828" stroke-width="1.6"/>
+<text x="646" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">Refused</text>
+<rect x="720" y="884" width="18" height="18" rx="4" fill="#F3E8FD" stroke="#7B3FA0" stroke-width="1.6"/>
+<text x="746" y="898" font-size="12.5" font-weight="normal" fill="#323F4B" text-anchor="start">Key material</text>
+<text x="1450" y="898" font-size="12.5" font-weight="bold" fill="#323F4B" text-anchor="end">Private key signs only on the PC. The public key in the bootloader can only verify.</text>
+</svg>
