@@ -114,6 +114,12 @@ then the application vector table check and `Jumping to application`.
 
 <img src="docs/images/test1_valid_serial_image_verified.png" width="520" alt="Serial monitor: image verified, jumping to application">
 
+The application running after the jump (photo of the NUCLEO-H755ZI-Q, green and red LEDs on). This photo, and the demo clip in the
+[Lab 4 repository](https://github.com/varunkumarrv6/Bootloader), were taken with the simple Lab 4 bootloader starting the same
+application at `0x08020400`; they were not recorded with this secure bootloader.
+
+<img src="docs/images/board_leds_after_jump.jpg" width="520" alt="NUCLEO-H755ZI-Q with LEDs lit while the application runs">
+
 ### Test 2: modified CM7 code is refused
 
 Flashed `tamper_cm7.bin` (one CM7 code byte changed, header untouched) at `0x08020000`.
@@ -160,6 +166,7 @@ Result: `signature OK`, `CM7 digest OK`, `FAIL: CM4 digest`, not booting.
 
 ### Not tested on the board
 
+- Video or photo evidence of the LEDs after the jump *with this secure bootloader* (the existing photo is from the Lab 4 bootloader).
 - A valid-format image signed with a different key (the signature check is expected to reject it).
 - The magic and size sanity checks.
 - The version field is stored and signed, but there is no rollback check.
