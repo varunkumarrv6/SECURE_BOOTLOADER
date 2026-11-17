@@ -1,0 +1,23 @@
+# build output
+Debug/
+Release/
+*.elf
+*.map
+*.o
+*.d
+*.su
+*.cyclo
+*.list
+*.bin
+*.hex
+
+# NEVER commit signing keys
+*.key
+*.pem
+ecc.key
+
+# third-party library (download separately, see README)
+CM7/STM32_Cryptographic/
+
+# IDE
+.metadata/
