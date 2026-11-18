@@ -13,16 +13,48 @@ triggers which failure. (Vector source: [`docs/secure_boot_flow.svg`](docs/secur
 
 <img src="docs/secure_boot_flow.png" alt="Secure boot flow: PC signing, flash memory map and bootloader checks" width="100%">
 
-## Lab assignment (summary)
+## Lab assignment
 
 Lab 5 continues Lab 4 (a bootloader that jumps to an application). The lab sheet
-asks for a secure bootloader on flash address `0x08000000` that verifies the
-signature and compares the digest for the CM4 and CM7 application code:
+*ELE304 LAB 5 Secure bootloader* asks for the following.
 
-- **Task 1:** change the Lab 4 bootloader setup so the CM7 application starts at
-  `0x08020400` (linker script origin and vector table offset).
-- **Task 2 a):** add the code that makes the bootloader secure: verify the
-  signed metadata, then the CM7 and CM4 digests, and jump only if everything matches.
+> In this lab you shall make a secure boot loader, that shall be on flash address
+> `0x0800 0000`. The secure bootloader shall verify signature and compare digest for
+> CM4 and CM7 application code.
+>
+> **Task 1:** Change the bootloader from Lab 4 so that the CM7 code starts at address `0x08020400`.
+>
+> **Task 2:** Make the bootloader secure.
+> a) Add the necessary code to the boot loader so that it is a secure bootloader.
+
+### Verification flow given in the lab sheet
+
+<img src="docs/images/lab5_question_flow_st.png" alt="Lab sheet figure: metadata and signature are hashed with SHA256 and verified with RSA or ECDSA, then the firmware hash is compared with the one in the metadata, then jump to application or fail actions" width="100%">
+
+| Step | Lab sheet | Where this project does it |
+|------|-----------|----------------------------|
+| 1 | Compute the metadata HASH | `verify_application()`: SHA-256 of the signed 128 B header block |
+| 2 | Verify the metadata signature using the computed HASH | `cmox_ecdsa_verify` with the public key compiled into the bootloader (ECDSA P-256) |
+| 3 | Compute the FW HASH | `cmox_hash_compute` over the CM7 and CM4 images in flash |
+| 4 | Compare the FW HASH with the one stored in the metadata | `hash_matches()` against `fw_cm7_tag` and `fw_cm4_tag` |
+| 5 | Take other actions if verification fails | print `FAIL: ...`, print `verification FAILED, not booting`, stay in the bootloader |
+| 6 | Jump to the application if verification is OK | `check_app()`, then `jump_to_application()` |
+
+### Memory map given in the lab sheet
+
+<img src="docs/images/lab5_question_memory_map.png" alt="Lab sheet memory map: bootloader at 0x08000000, metadata below the CM7 application at 0x08020400, CM4 application at 0x08100000, arrow showing the jump from the bootloader to the application" width="75%">
+
+The sheet draws the metadata block directly below the CM7 code at `0x08020400`.
+In this project the metadata header occupies `0x08020000` to `0x080203FF`, so the
+CM7 application starts at `0x08020400` right after it. The CM4 application is at
+`0x08100000` as in the sheet. See the memory map below.
+
+<details>
+<summary>Full lab sheet page</summary>
+
+<img src="docs/images/lab5_question_sheet.png" alt="ELE304 Lab 5 lab sheet, full page" width="70%">
+
+</details>
 
 The course material this follows (not included in this repository):
 *ELE304 LAB 5 Secure bootloader* (lab sheet), *ELE304 Secure Boot Loader*
